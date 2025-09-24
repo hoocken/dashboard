@@ -1,12 +1,12 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, SyntheticEvent, MouseEventHandler } from 'react';
 import styles from './whiteboard.module.css';
 
 
 export default function Whiteboard() {
     // From https://www.youtube.com/watch?v=p3jJ5z7i3KE
-    const canvasRef = useRef(null);
-    const [context, setContext] = useState(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
     const [drawing, setDrawing] = useState(false);
     const [drawingActions, setDrawingActions] = useState([]);
     const [lineWidth, setLineWidth] = useState(20);
@@ -28,7 +28,7 @@ export default function Whiteboard() {
         }
     }, []);
 
-    const draw = (e) => {
+    const draw = (e: React.MouseEvent) => {
         if (!drawing || !context) return;
         const { offsetX, offsetY } = e.nativeEvent;
         context.lineWidth = lineWidth;
@@ -36,7 +36,7 @@ export default function Whiteboard() {
         context.stroke();
     }
 
-    const startDrawing = (e) => {
+    const startDrawing = (e: React.MouseEvent) => {
         if (context) {
             const { offsetX, offsetY } = e.nativeEvent;
             context.beginPath();
@@ -54,8 +54,11 @@ export default function Whiteboard() {
 
     const clearDrawing = () => {
         setCurrentPath([]);
-        const newContext = canvasRef.current.getContext('2d');
-        newContext.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        if (canvasRef.current){
+            const newContext = canvasRef.current.getContext('2d');
+            if (!newContext) return;
+            newContext.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        }
     }
 
     const sendImage = async () => {
@@ -64,7 +67,7 @@ export default function Whiteboard() {
             const dataURL = canvas.toDataURL('image/png');
             const formData = new FormData();
             formData.append('file', dataURL);
-            formData.append('number', rngNumber);
+            formData.append('number', rngNumber.toString());
             const resp = await fetch('http://localhost:5050/api/send-image', {
             method: 'POST',
             body: formData,
