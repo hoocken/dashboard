@@ -1,25 +1,17 @@
+'use client';
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function Home() {
+
+  
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
+        <h1 className={styles.header}> Dashboard </h1>
+        <p>Welcome to my dashboard! I am Anthony, an Informatics student studying at TUM.</p>
         <div className={styles.ctas}>
           <a
             className={styles.primary}
@@ -29,12 +21,12 @@ export default function Home() {
           >
             <Image
               className={styles.logo}
-              src="/vercel.svg"
+              src="/number-one-icon.svg"
               alt="Vercel logomark"
               width={20}
               height={20}
             />
-            Deploy now
+            Digit Recognition
           </a>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
