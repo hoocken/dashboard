@@ -49,18 +49,15 @@
 .toggler {
     border: 0;
     background-color: transparent;
-    position: relative;
+    position: fixed;
     font-size: 20px;
     height: 60px;
     width: 40px;
     color: white;
-    position: absolute;
     z-index: 100;
-}
-
-.toggleractive {
-    color: black;
-    position: fixed;
+    mix-blend-mode: difference;
+    transition:
+        color 0.2s;
 }
 
 /* Enable hover only on non-touch devices */

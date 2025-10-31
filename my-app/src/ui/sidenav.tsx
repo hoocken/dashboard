@@ -22,11 +22,11 @@ export default function SideNav() {
   }
 
   return (
-    <div>
+    <>
       <HamburgerMenuButton toggle={handleClick} open={isOpen} />
       <HamburgerMenuCollapse open={isOpen}>
       </HamburgerMenuCollapse>
-    </div>
+    </>
   );
 }
 
@@ -36,7 +36,7 @@ function HamburgerMenuButton({ toggle, open }) {
       type="button"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      className={`${styles.toggler} ${open ?  styles.toggleractive : ''}`}
+      className={styles.toggler}
       onClick={toggle}
     >
       &#8801;
