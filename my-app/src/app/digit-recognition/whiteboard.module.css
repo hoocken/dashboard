@@ -1,0 +1,32 @@
+.whiteboard{
+    background: #ffffff;
+    border: '1px solid black'
+} 
+
+.divbutton {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    background: #ffffff;
+    border-radius: 128px;
+    border: 20px;
+    border-color: #ffffff;
+    padding: 20px;
+    margin-right: 10px;
+    display: grid;
+    align-items: center;
+    transition:
+        background 0.2s,
+        color 0.2s;
+    color: #000000
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .button:hover {
+        background: #383838;
+        color: #ffffff;
+        border-color: transparent;
+    }
+}

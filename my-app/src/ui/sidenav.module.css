@@ -1,0 +1,71 @@
+.sidenav {
+    display: grid;
+    --gray-rgb: 0, 0, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --link-primary-hover: #f2f2f2;
+    --link-secondary-hover: #f2f2f2;
+
+    height: 100vh;
+    width: 240px;
+    background-color: rgb(230, 234, 234);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    padding-top: 60px;
+
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+    overflow: hidden;
+}
+
+.sidenavclosed {
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.navlinks{
+    font-family: var(--font-geist-mono);
+    color: black;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-items: left;
+    padding-left: 20px;
+    padding-right: 10px;
+    gap: 10px;
+    transition:
+        background 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+}
+
+.navlinksactive{
+    background: var(--link-primary-hover);
+}
+
+.toggler {
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    font-size: 20px;
+    height: 60px;
+    width: 40px;
+    color: white;
+    position: absolute;
+    z-index: 100;
+}
+
+.toggleractive {
+    color: black;
+    position: fixed;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .navlinks:hover {
+        background: var(--link-primary-hover);
+    }
+}
