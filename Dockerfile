@@ -15,16 +15,16 @@ EXPOSE 3000
 CMD ["npm", "run", "frontend"]
 
 ###############################################################################
-FROM python:3.9-slim-buster as backend
-WORKDIR /app
-COPY backend/package.json backend/requirements.txt ./
-RUN pip install -r requirements.txt
+# FROM python:3.9-slim-buster as backend
+# WORKDIR /app
+# COPY backend/package.json backend/requirements.txt ./
+# RUN pip install -r requirements.txt
 
-COPY /backend ./
+# COPY /backend ./
 
-FROM backend AS backend-dev
-EXPOSE 5050
-CMD ["python", "app.py"]
+# FROM backend AS backend-dev
+# EXPOSE 5050
+# CMD ["python", "app.py"]
 
 
 
