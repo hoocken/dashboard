@@ -1,0 +1,23 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Pull Docker Image
+      run: sudo docker pull hoocken/dashboard:latest
+
+    - name: Delete Old docker container
+      run: docker rm -f hoocken/dashboard-container || true
+
+    - name: Run Docker Container
+      run: docker run -d -p 8-8-:8-8- --name hoocken/dashboard-container hoocken/dashboard
