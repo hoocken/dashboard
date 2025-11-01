@@ -20,7 +20,7 @@ jobs:
       
       
     - name: Build the Docker Image
-      run: docker build -t cicd-pipeline .
+      run: docker build -t hoocken/dashboard .
       
     - name: Push to Dockerhub
       run: docker push hoocken/dashboard:latest
