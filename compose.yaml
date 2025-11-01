@@ -1,11 +1,13 @@
 services:
   frontend:
+    image:
+      hoocken/dashboard
     build:
-      target: frontend-dev
+      target: dashboard
     ports:
       - "3000:3000"
-  backend:
-    build:
-      target: backend-dev
-    ports:
-      - "5050:5050"
+  # backend:
+  #   build:
+  #     target: backend-dev
+  #   ports:
+  #     - "5050:5050"
