@@ -14,6 +14,11 @@ FROM frontend AS dashboard
 EXPOSE 3000
 CMD ["npm", "run", "frontend"]
 
+# FROM nginx:1.23.3-alpine as nginx
+# COPY nginx.conf /etc/nginx/nginx.conf
+# EXPOSE 80
+# EXPOSE 443
+
 ###############################################################################
 # FROM python:3.9-slim-buster as backend
 # WORKDIR /app

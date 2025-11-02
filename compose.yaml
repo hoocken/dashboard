@@ -1,11 +1,20 @@
 services:
-  frontend:
-    image:
-      hoocken/dashboard
-    build:
-      target: dashboard
+  dashboard:
+    image: hoocken/dashboard:latest
+    container_name: dashboard-container
+    restart: always
     ports:
       - "3000:3000"
+    
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /etc/ssl:/etc/nginx/ssl:ro
+  #   restart: always 
   # backend:
   #   build:
   #     target: backend-dev
