@@ -12,7 +12,9 @@ COPY my-app/eslint.config.mjs my-app/next.config.ts my-app/tsconfig.json my-app/
 
 FROM frontend AS dashboard
 EXPOSE 3000
-CMD ["npm", "run", "frontend"]
+CMD ["npm", "run", "build"]
+
+CMD ["npm", "run", "start"]
 
 # FROM nginx:1.23.3-alpine as nginx
 # COPY nginx.conf /etc/nginx/nginx.conf
