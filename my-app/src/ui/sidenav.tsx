@@ -14,6 +14,14 @@ const links = [
   {name: 'Digit Recognition', href:'/digit-recognition', icon: '/number-one-icon.svg'}
 ];
 
+type HamburgerMenuButtonProps = {
+    toggle: () => void;
+};
+
+type HamburgerMenuCollapseProps = {
+    open: boolean;
+};
+
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,14 +31,14 @@ export default function SideNav() {
 
   return (
     <>
-      <HamburgerMenuButton toggle={handleClick} open={isOpen} />
+      <HamburgerMenuButton toggle={handleClick} />
       <HamburgerMenuCollapse open={isOpen}>
       </HamburgerMenuCollapse>
     </>
   );
 }
 
-function HamburgerMenuButton({ toggle, open }) {
+function HamburgerMenuButton({ toggle }: HamburgerMenuButtonProps) {
   return (
     <button
       type="button"
@@ -44,7 +52,7 @@ function HamburgerMenuButton({ toggle, open }) {
   )
 }
 
-function HamburgerMenuCollapse({ open }) {
+function HamburgerMenuCollapse({ open }: HamburgerMenuCollapseProps) {
   const ref = useRef(null);
   const pathname = usePathname();
 

@@ -65,13 +65,13 @@ export default function Home() {
     const SHIFTS = [...images]
 
     SHIFTS.forEach((image, index) => {
-      const image_timeline = gsap.timeline().set(image, {
+      const image_timeline = gsap.timeline().set(image as gsap.TweenTarget, {
         xPercent: 400,
         opacity: 0.75
       })
       // Panning
       .fromTo(
-        image,
+        image as gsap.TweenTarget,
         {
           xPercent: 400,
         },
@@ -85,7 +85,7 @@ export default function Home() {
       ) 
       // Scale && Z
       .to(
-        image,
+        image as gsap.TweenTarget,
         {
           z: 100,
           scale: 1.5,
@@ -96,7 +96,7 @@ export default function Home() {
         0.35
       )
       .fromTo(
-        image,
+        image as gsap.TweenTarget,
         {
           zIndex: 1,
         },
