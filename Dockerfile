@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS frontend
+FROM node:lts-alpine
 RUN corepack enable && corepack prepare pnpm@latest --activate 
 
 # Install pnpm
@@ -10,10 +10,10 @@ COPY my-app/public ./public
 COPY my-app/src ./src
 COPY my-app/eslint.config.mjs my-app/next.config.ts my-app/tsconfig.json my-app/next-env.d.ts ./
 
-FROM frontend AS build
+# FROM frontend AS build
 CMD ["npm", "run", "build"]
 
-FROM build AS deploy
+# FROM build AS deploy
 CMD ["npm", "run", "start"]
 
 # FROM nginx:1.23.3-alpine as nginx
