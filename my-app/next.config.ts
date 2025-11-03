@@ -10,4 +10,8 @@ const nextConfig : NextConfig = {
 //   assetPrefix: './'
 // }
 
+module.exports = {
+  output: 'standalone'
+}
+
 export default nextConfig;
